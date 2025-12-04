@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educazione Civica – Domenico De Filippis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:w300;400;600&family=Montserrat:w300;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #e6f7ff;
+  color: #003366;
+  scroll-behavior: smooth;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: #0099cc;
+  position: fixed;
+  top: 0;
+  left: -280px;
+  transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+  z-index: 9999;
+  overflow-y: auto;
+  padding-top: 40px;
+}
+
+.sidebar.open { left:0; }
+.sidebar h2 { text-align:center; color:#ffffff; margin-bottom:30px; font-weight:700; font-size:24px; }
+.sidebar a {
+  color:#ffffff;
+  display:block;
+  padding:18px 30px;
+  text-decoration:none;
+  font-size:18px;
+  border-bottom:1px solid #0077aa;
+  transition: all 0.3s ease;
+}
+.sidebar a:hover { 
+  background:#0077aa;
+  color:#ffffff;
+  transform: translateX(10px);
+  font-weight:600;
+}
+
+.menu-btn { 
+  position:fixed; left:20px; top:20px; 
+  background:#0099cc; color:white; padding:14px 18px; 
+  border-radius:12px; cursor:pointer; font-weight:700; z-index:10000; 
+  box-shadow:0 0 14px rgba(0,153,204,0.6); transition: background 0.3s ease, transform 0.3s ease;
+}
+.menu-btn:hover { background:#0077aa; transform: scale(1.05); }
+
+.container { margin-left:60px; padding:60px 80px; }
+h1 { font-size:42px; font-family:'Montserrat', sans-serif; color:#0077aa; margin-bottom:25px; }
+h2 { color:#0077aa; font-size:28px; margin-bottom:15px; }
+p { line-height:1.8; font-size:17px; margin-bottom:15px; }
+
+.section {
+  background:#ffffff;
+  padding:35px;
+  border-radius:15px;
+  margin-bottom:40px;
+  border-left:6px solid #0099cc;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+.section.active { opacity:1; transform:translateY(0); }
+
+.page { display:none; }
+.active-page { display:block; }
+
+.header-img { width:100%; height:300px; border-radius:15px; object-fit:cover; margin-bottom:25px; opacity:0; transform:translateY(20px); transition:1s ease;}
+.header-img.active { opacity:1; transform:translateY(0); }
+
+.goal-icon {
+  width:80px; height:80px; margin-right:20px; vertical-align:middle;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
+
+#graph { background:#ffffff; border-radius:15px; padding:10px; margin-top:20px; }
+
+</style>
+</head>
+<body>
+
+<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+<div class="sidebar" id="sidebar">
+  <h2>D. De Filippis</h2>
+  <a onclick="showPage('home')">🏠 Home</a>
+  <a onclick="showPage('agenda')">🌍 Agenda 2030</a>
+  <a onclick="showPage('modelli')">📊 Modelli Matematici</a>
+  <a onclick="showPage('goal16')">🕊 Goal 16 (English)</a>
+  <a onclick="showPage('gdpr')">⚖ GDPR & Cittadinanza</a>
+  <a onclick="showPage('pace')">✌ Marcia della Pace</a>
+</div>
+
+<div class="container">
+
+<!-- HOME -->
+<div id="home" class="page active-page">
+  <img class="header-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Educazione civica">
+  <h1>Educazione Civica: Temi e Obiettivi</h1>
+  <div class="section">
+    <p>Questa sezione introduce i principali temi trattati durante le lezioni di Educazione Civica. Ogni pagina esplora un argomento specifico con spiegazioni dettagliate, immagini e animazioni per comprendere meglio concetti, pratiche e valori civici.</p>
+    <p>Gli argomenti principali sono l’Agenda 2030 per lo sviluppo sostenibile, con focus sugli obiettivi 7, 11 e 14; i modelli matematici esponenziali e logaritmici; la cittadinanza attiva e consapevole (Goal 16); il GDPR e la protezione dei dati; e infine la partecipazione della classe alla Marcia della Pace.</p>
+    <p>L’educazione civica ci permette di capire come le azioni quotidiane influiscano sull’ambiente, la società e la legalità, e come possiamo diventare cittadini responsabili e partecipi.</p>
+        <img class="header-img" src="https://asvis.it/plugins/slir/c560x270-w560-h270/public/asvis2/images/Notizie_2021/Agenda2030_POST_1200x675.png" alt="Agenda 2030">
+    <img class="header-img" src="https://images.unsplash.com/photo-1565372911010-8a07a9aa8bc1" alt="Modelli matematici">
+    <img class="header-img" src="https://images.unsplash.com/photo-1581090700227-9f9f97abf1d3" alt="Cittadinanza attiva">
+    <  </div>
+</div>
+
+<!-- AGENDA 2030 -->
+<div id="agenda" class="page">
+  <h1>Agenda 2030 – Obiettivi 7, 11, 14</h1>
+  <div class="section">
+    <h2>Obiettivo 7 – Energia pulita e accessibile</h2>
+    <img class="goal-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/66/SDG_7_icon.svg" alt="Goal 7">
+    <img class="header-img" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Energia pulita">
+    <p>L’obiettivo è garantire accesso a energia sostenibile e moderna per tutti. Abbiamo studiato fonti rinnovabili come solare, eolico e idroelettrico, comprendendo come la produzione energetica influisca sull’ambiente.</p>
+    <p>Attraverso esempi concreti, come l’uso di pannelli solari e lampadine a basso consumo, abbiamo compreso come la sostenibilità energetica influisca sulla vita quotidiana.</p>
+    <p>Analizzando dati globali, abbiamo osservato come i consumi energetici possano modificare l’ambiente e come piccole azioni quotidiane possano avere un grande impatto.</p>
+    <p>In classe sono state fatte simulazioni per confrontare fonti energetiche tradizionali e rinnovabili, evidenziando i benefici ambientali e sociali delle energie pulite.</p>
+    <p>Questo studio ci ha permesso di capire che l’energia sostenibile è una responsabilità di tutti e un elemento chiave per lo sviluppo globale.</p>
+  </div>
+
+  <div class="section">
+    <h2>Obiettivo 11 – Città sostenibili</h2>
+    <img class="goal-icon" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/SDG_11_icon.svg" alt="Goal 11">
+    <img class="header-img" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d" alt="Città sostenibili">
+    <p>Promuovere città sicure, inclusive e sostenibili. Abbiamo analizzato trasporti ecologici, gestione dei rifiuti e spazi verdi.</p>
+    <p>Abbiamo osservato città che favoriscono percorsi ciclabili, trasporti pubblici efficienti e riduzione dell’inquinamento. La progettazione urbana influisce sulla qualità della vita dei cittadini.</p>
+    <p>Le città sostenibili aumentano socialità, riducono traffico e inquinamento e migliorano il benessere generale.</p>
+    <p>Abbiamo discusso politiche pubbliche, infrastrutture verdi e impatto delle scelte individuali sul territorio urbano.</p>
+    <p>Progettare città sostenibili è un compito di tutti e richiede attenzione e collaborazione tra cittadini e istituzioni.</p>
+  </div>
+
+  <div class="section">
+    <h2>Obiettivo 14 – Vita sott’acqua</h2>
+    <img class="goal-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/SDG_14_icon.svg" alt="Goal 14">
+    <img class="header-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Vita sott'acqua">
+    <p>Proteggere gli oceani e le risorse marine è fondamentale. Abbiamo studiato inquinamento, acidificazione dei mari e specie a rischio.</p>
+    <p>Abbiamo compreso l’impatto umano sulla biodiversità marina e come ridurre rifiuti e plastiche in mare.</p>
+    <p>Partecipare a campagne di sensibilizzazione e usare prodotti sostenibili contribuisce alla salvaguardia degli ecosistemi.</p>
+    <p>Immagini e dati mostrano l’importanza della vita marina per l’equilibrio globale e la sopravvivenza umana.</p>
+    <p>Questa esperienza ha evidenziato il legame tra educazione civica e tutela ambientale.</p>
+  </div>
+</div>
+
+<!-- MODELLI MATEMATICI -->
+<div id="modelli" class="page">
+  <h1>Modelli Esponenziali e Logaritmici</h1>
+  <div class="section">
+    <img class="header-img" src="https://images.unsplash.com/photo-1581093458793-827aa9c7b1e3" alt="Grafici matematici">
+    <p>I modelli matematici ci aiutano a comprendere fenomeni complessi. I modelli esponenziali descrivono fenomeni che crescono rapidamente, come popolazione o consumo energetico, mentre i modelli logaritmici rappresentano fenomeni che rallentano progressivamente.</p>
+    <p>Abbiamo applicato questi modelli a dati reali, osservando trend ambientali, sociali ed economici. I grafici ci hanno permesso di visualizzare chiaramente la differenza tra andamento rapido e rallentato.</p>
+    <p>In classe abbiamo imparato a leggere grafici, interpretare formule esponenziali e logaritmiche, e comprendere le tendenze nel tempo.</p>
+    <p>Questo studio ci ha insegnato che la matematica è uno strumento pratico per interpretare la realtà e prendere decisioni consapevoli.</p>
+    <canvas id="graph" width="600" height="400"></canvas>
+  </div>
+</div>
+
+<!-- GOAL 16 -->
+<div id="goal16" class="page">
+  <h1>Goal 16 – Peace, Justice & Strong Institutions</h1>
+  <div class="section">
+    <img class="header-img" src="https://upload.wikimedia.org/wikipedia/commons/1/17/SDG_16_animated_icon.gif" alt="Goal 16 Animated">
+    <p>Goal 16 promotes peaceful and inclusive societies, ensures access to justice for all, and encourages transparent institutions. In class, we explored how active citizenship allows individuals to contribute positively to their communities.</p>
+    <p>Examples include volunteering, participating in school councils, promoting fairness and equality, and respecting laws. Active citizenship helps maintain peace, justice, and strong institutions.</p>
+    <p>We discussed global conflicts, human rights issues, and the importance of participation in decision-making processes. Understanding these concepts strengthens our sense of responsibility as citizens.</p>
+    <p>Through debates and projects, we analyzed real cases and proposed solutions to improve our community, reinforcing values of democracy and inclusion.</p>
+    <p>Goal 16 emphasizes that everyone has a role in shaping society, promoting peace and equality through informed and responsible actions.</p>
+    <img class="header-img" src="https://upload.wikimedia.org/wikipedia/commons/5/53/SDG_16_icon.png" alt="Obiettivo 16">
+  </div>
+</div>
+
+<!-- GDPR -->
+<div id="gdpr" class="page">
+  <h1>GDPR – Privacy e Cittadinanza</h1>
+  <div class="section">
+    <img class="header-img" src="https://images.unsplash.com/photo-1581093458793-827aa9c7b1e3" alt="Cittadinanza attiva">
+    <p>Il GDPR tutela i dati personali dei cittadini e degli studenti. Abbiamo studiato come proteggere informazioni sensibili, comprendendo l’importanza della privacy nella vita scolastica e nella pubblica amministrazione.</p>
+    <p>Abbiamo discusso casi concreti di uso corretto dei dati, protezione di foto, documenti e informazioni personali. Comprendere le regole è fondamentale per prevenire abusi e rispettare diritti altrui.</p>
+    <p>In classe abbiamo simulato la gestione dei dati in modo sicuro, imparando procedure corrette e consapevolezza delle responsabilità. Questo ci ha insegnato a comportarci in modo etico e responsabile.</p>
+    <p>Il rispetto del GDPR contribuisce alla sicurezza della comunità e alla protezione dei diritti individuali, formando cittadini consapevoli.</p>
+    <img class="header-img" src="https://images.unsplash.com/photo-1596496050373-ef78f4db7c13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg" alt="Cittadinanza e GDPR">
+  </div>
+</div>
+
+<!-- MARCIA DELLA PACE -->
+<div id="pace" class="page">
+  <h1>Marcia della Pace</h1>
+  <div class="section">
+    <img class="header-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Peace_flag.jpg" alt="Bandiera della Pace">
+    <p>La partecipazione alla Marcia della Pace è stata un’esperienza educativa intensa. Abbiamo riflettuto sul conflitto Israele-Palestina e sull’importanza del dialogo e della solidarietà.</p>
+    <p>L’esperienza ha permesso di osservare concretamente come cittadini attivi possano contribuire alla promozione della pace e dei diritti umani. Abbiamo discusso valori come rispetto, tolleranza e cooperazione.</p>
+    <p>La marcia ci ha insegnato che anche azioni simboliche possono avere un impatto educativo e sociale, sensibilizzando la comunità sui temi della pace e della giustizia.</p>
+    <p>Abbiamo osservato comportamenti civici e organizzazione della manifestazione, comprendendo l’importanza della partecipazione e della responsabilità collettiva.</p>
+    <p>Questa esperienza rimane un esempio concreto di come l’educazione civica possa tradursi in azioni reali e significative per la società.</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggleMenu() { document.getElementById("sidebar").classList.toggle("open"); }
+function showPage(pageID){
+  let pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('active-page'));
+  document.getElementById(pageID).classList.add('active-page');
+  let imgs = document.querySelectorAll('.page.active-page .header-img');
+  imgs.forEach(i => i.classList.add('active'));
+  let secs = document.querySelectorAll('.page.active-page .section');
+  secs.forEach(s => s.classList.add('active'));
+}
+
+const ctx = document.getElementById('graph').getContext('2d');
+const graph = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago'],
+    datasets: [{
+      label:'Crescita Esponenziale',
+      data:[2,4,8,16,32,64,128,256],
+      borderColor:'#0077aa',
+      fill:false,
+      tension:0.3
+    },{
+      label:'Crescita Logaritmica',
+      data:[1,2,3,4,5,6,7,8],
+      borderColor:'#00cccc',
+      fill:false,
+      tension:0.3
+    }]
+  },
+  options: { responsive:true, plugins:{ legend:{ position:'top'} } }
+});
+
+// Animazioni scroll
+window.addEventListener('scroll', ()=>{
+  document.querySelectorAll('.section, .header-img').forEach(el=>{
+    let top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){ el.classList.add('active'); }
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
